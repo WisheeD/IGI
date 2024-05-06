@@ -126,7 +126,7 @@ class TextAnalyzer:
     @staticmethod
     def search_word(text: str) -> list:
         """Search for words in text. """
-        return [word for word in re.findall(r'[BCDFGHJKLMNPQRSTVWXYZ]\w*', text)]
+        return [word for word in re.findall(r'\b[bcdfghjklmnpqrstvwxyz]\w*', text)]
 
     @staticmethod
     def search_car_number(text: str):

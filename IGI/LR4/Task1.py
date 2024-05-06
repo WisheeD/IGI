@@ -117,10 +117,13 @@ class CSVSerializer(FileMixin):
     def read_from_file(self, file_name) -> 'Forest':
         """Read data from file. """
         forests = dict()
-        with open(file_name, "r", newline='') as file:
-            reader = csv.DictReader(file)
-            for row in reader:
-                forests[row['type']] = {"total": int(row['total']), "healthy": int(row['healthy'])}
+        try:
+            with open(file_name, "r", newline='') as file:
+                reader = csv.DictReader(file)
+                for row in reader:
+                    forests[row['type']] = {"total": int(row['total']), "healthy": int(row['healthy'])}
+        except FileNotFoundError:
+            raise FileNotFoundError("File not found")
         return Forest(forests)
 
 
@@ -132,8 +135,11 @@ class PickleSerializer(FileMixin):
 
     def read_from_file(self, file_name) -> 'Forest':
         """Read data from file. """
-        with open(file_name, "rb") as file:
-            return Forest(pickle.load(file))
+        try:
+            with open(file_name, "rb") as file:
+                return Forest(pickle.load(file))
+        except FileNotFoundError:
+            raise FileNotFoundError("File not found")
 
 
 def is_command(value: str) -> int:

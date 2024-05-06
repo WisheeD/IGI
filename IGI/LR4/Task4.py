@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
 import math
+import numpy as np
+from matplotlib import pyplot as plt
 
 
 class GeometricFigure(ABC):
@@ -38,6 +40,25 @@ class Rhombus(GeometricFigure):
             angle=self._angle
         )
 
+    def plot(self):
+
+        half_diagonal = self._side / 2 / np.sin(np.radians(self._angle / 2))
+        x = [0, self._side/2, 0, -self._side/2, 0]
+        y = [half_diagonal, 0, -half_diagonal, 0, half_diagonal]
+
+        angle_rad = np.radians(self._angle)
+        x_rot = [xi * np.cos(angle_rad) - yi * np.sin(angle_rad) for xi, yi in zip(x, y)]
+        y_rot = [xi * np.sin(angle_rad) + yi * np.cos(angle_rad) for xi, yi in zip(x, y)]
+
+        plt.plot(x_rot, y_rot, color=self.color.color)
+        plt.fill(x_rot, y_rot, color=self.color.color, alpha=0.4)
+
+        plt.axis('equal')
+        plt.title(input("Подпись графика: "))
+        plt.xlabel('X')
+        plt.ylabel('Y')
+        plt.show()
+
 
 def is_command(value: str) -> int:
     """Checks the value to be between 0 and 4. """
@@ -75,6 +96,13 @@ def is_side(value: str) -> float:
             value = input("Invalid input, please enter a valid value: ")
 
 
+def is_color(value: str) -> str:
+    while True:
+        if value in ['blue', 'black', 'pink', 'red', 'green', 'yellow', 'orange']:
+            return value
+        value = input("Color should be blue, black, pink, red, green, yellow, orange, input value: ")
+
+
 def menu() -> None:
     """Menu for user input. """
     print("\n1: Input the values")
@@ -90,7 +118,7 @@ def main():
         if command == 1:
             side = is_side(input("Enter the length of the side of the rhombus: "))
             angle = is_angle(input("Enter the angle of the rhombus in degrees: "))
-            color = input("Enter diamond color: ")
+            color = is_color(input("Enter diamond color: "))
             rhombus = Rhombus(side, angle, color)
         if command == 2:
             if rhombus is None:
@@ -98,6 +126,7 @@ def main():
                 continue
             print("Area of a rhombus:", rhombus.calculate_area())
             print(rhombus.get_info())
+            rhombus.plot()
             with open("info.txt", "w") as file:
                 file.write("Area of a rhombus: {}\n".format(rhombus.calculate_area()))
                 file.write("{}\n".format(rhombus.get_info()))
