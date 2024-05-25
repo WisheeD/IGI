@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}Отклонение сделки{% endblock %}
+{% block content %}
+<style>
+  .reject-deal {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+
+  .reject-deal h2 {
+    margin-top: 0;
+  }
+
+  .reject-deal p {
+    margin-bottom: 20px;
+  }
+
+  .reject-deal form {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .reject-deal button,
+  .reject-deal a {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .reject-deal button {
+    background-color: #dc3545;
+    color: #fff;
+  }
+
+  .reject-deal a {
+    background-color: #6c757d;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .reject-deal button:hover,
+  .reject-deal a:hover {
+    opacity: 0.8;
+  }
+</style>
+
+<div class="reject-deal">
+  <h2>Отклонение сделки</h2>
+  <p>Вы уверены, что хотите отклонить сделку "{{ deal.property.name }}"?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Отклонить</button>
+    <a href="{% url 'deal_detail' deal.id %}">Отмена</a>
+  </form>
+</div>
+{% endblock %}

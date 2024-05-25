@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}Новости{% endblock %}
+
+{% block content %}
+<style>
+    .news-list {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    .news-item {
+        margin-bottom: 20px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+    .news-item h3 {
+        margin-top: 0;
+    }
+    .news-item img {
+    max-width: 200px;
+    height: auto;
+    margin-right: 10px;
+    }
+    .create-news a {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+    .create-news a:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<div class="news-list">
+    <h1>Новости</h1>
+    {% for news in news %}
+        <div class="news-item">
+            <h3>{{ news.title }}</h3>
+            {% if news.image %}
+                <img src="{{ news.image.url }}" alt="{{ news.title }}">
+            {% endif %}
+            <p>{{ news.summary }}</p>
+            <a href="{% url 'news_detail' news.pk %}">Читать далее</a>
+        </div>
+    {% empty %}
+        <p>Нет новостей.</p>
+    {% endfor %}
+</div>
+{% endblock %}

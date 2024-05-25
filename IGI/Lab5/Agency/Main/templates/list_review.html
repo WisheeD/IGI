@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}Отзывы{% endblock %}
+
+{% block content %}
+<style>
+    .review-list {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    .review-item {
+        margin-bottom: 20px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+    .review-item h3 {
+        margin-top: 0;
+    }
+    .create-review {
+        text-align: right;
+        margin-bottom: 20px;
+    }
+    .create-review a {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+    .create-review a:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<div class="review-list">
+    <h1>Отзывы</h1>
+    <div class="create-review">
+        <a href="{% url 'create_review' %}">Добавить отзыв</a>
+    </div>
+    {% for review in reviews %}
+        <div class="review-item">
+            <h3>Отзыв от {{ review.author }}</h3>
+            <p><strong>Дата:</strong> {{ review.date|date:"d/m/Y" }}</p>
+            <p><strong>Оценка:</strong> {{ review.grade }}</p>
+            <p>{{ review.review }}</p>
+        </div>
+    {% empty %}
+        <p>Нет отзывов.</p>
+    {% endfor %}
+</div>
+{% endblock %}

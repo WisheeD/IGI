@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}Покупка недвижимости{% endblock %}
+{% block content %}
+<style>
+.buy-realty {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 500px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.buy-realty h2 {
+    margin-top: 0;
+}
+
+.buy-realty p {
+    margin-bottom: 20px;
+}
+
+.buy-realty form {
+    display: flex;
+    justify-content: space-between;
+}
+
+.buy-realty button,
+.buy-realty a {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.buy-realty button {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.buy-realty a {
+    background-color: #6c757d;
+    color: #fff;
+    text-decoration: none;
+}
+
+.buy-realty button:hover,
+.buy-realty a:hover {
+    opacity: 0.8;
+}
+</style>
+
+<div class="buy-realty">
+    <h2>Подтвердить покупку</h2>
+    <p>Вы уверены, что хотите купить эту недвижимость?</p>
+    <form action="{% url 'confirm_buy_realty' pk=realty.pk %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Подтвердить</button>
+        <a href="{% url 'realty_detail' pk=realty.pk %}">Отмена</a>
+    </form>
+</div>
+{% endblock %}

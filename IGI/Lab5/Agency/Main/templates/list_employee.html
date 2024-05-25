@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}Сотрудники{% endblock %}
+
+{% block content %}
+<style>
+    .employee-list {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    .employee-item {
+        margin-bottom: 20px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        display: flex;
+    }
+    .employee-item img {
+        max-width: 200px;
+        height: auto;
+    }
+    .employee-info {
+        padding-left: 20px;
+    }
+    .employee-info h3 {
+        margin-top: 0;
+    }
+</style>
+
+<div class="employee-list">
+    {% for employee in employees %}
+        <div class="employee-item">
+            <div class="employee-image">
+                {% if employee.image %}
+                    <img src="{{ employee.image.url }}" alt="{{ employee.user.username }}">
+                {% else %}
+                    <p>Фото отсутствует</p>
+                {% endif %}
+            </div>
+            <div class="employee-info">
+                <h3>{{ employee.user.username }}</h3>
+                <p><strong>Имя сотрудника:</strong> {{ employee.username }} </p>
+                <p><strong>Должность:</strong> {{ employee.work }}</p>
+                <p><strong>Телефон:</strong> {{ employee.phone }}</p>
+                <p><strong>Email:</strong> {{ employee.email }}</p>
+            </div>
+        </div>
+    {% empty %}
+        <p>Нет работников.</p>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}Детали недвижимости{% endblock %}
+{% block content %}
+<style>
+    .realty-detail {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+
+    .realty-detail img {
+        width: 100%;
+        height: auto;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+
+    .realty-detail h2 {
+        margin-top: 0;
+    }
+
+    .realty-detail p {
+        margin-bottom: 10px;
+    }
+
+    .realty-detail form {
+        margin-top: 10px;
+    }
+
+    .realty-detail button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .realty-detail button:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<div class="realty-detail">
+    <img src="{{ realty.image.url }}" alt="{{ realty.name }}">
+    <h2>{{ realty.name }}</h2>
+    <p>Площадь: {{ realty.area }} кв. м</p>
+    <p>Адрес: {{ realty.address }}</p>
+    <p>Тип: {{ realty.realty_type }}</p>
+    <p>Стоимость: {{ realty.price }}$</p>
+    <p>Описание: {{ realty.description }}</p>
+    
+    {% if realty.owner != user %}
+    <form action="{% url 'buy_realty' pk=realty.pk %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary">Купить</button>
+    </form>
+    {% else %}
+    <p>Вы владеете этой недвижимостью.</p>
+    {% endif %}
+</div>
+{% endblock %}

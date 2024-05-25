@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block title %}Личный кабинет пользователя{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        min-height: 100vh;
+    }
+    .container {
+        width: 95%;
+        max-width: 1600px;
+        padding: 30px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        margin-top: 20px;
+        margin-bottom: 40px;
+        display: flex;
+        flex-direction: row;
+    }
+    .sidebar {
+        width: 350px;
+        padding-right: 30px;
+        border-right: 1px solid #ddd;
+        flex-shrink: 0;
+    }
+    .sidebar ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    .sidebar ul li {
+        padding: 15px 0;
+        border-bottom: 1px solid #ddd;
+    }
+    .sidebar ul li:last-child {
+        border-bottom: none;
+    }
+    .sidebar ul li a {
+        text-decoration: none;
+        color: #007bff;
+        display: block;
+    }
+    .content {
+        flex: 1;
+        padding-left: 30px;
+    }
+    .content h1, .content h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .content ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    .content ul li {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+    .content ul li:last-child {
+        border-bottom: none;
+    }
+</style>
+
+<div class="container">
+    <div class="sidebar">
+        <ul>
+            <li><a href="{% url 'list_realty' %}">Недвижимость</a></li>
+            <li><a href="{% url 'list_purchased'%}">Мои заказы</a></li>
+            <li><a href="{% url 'list_coupon' %}">Мои промокоды</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        <h1>Личный кабинет пользователя</h1>
+        <p>Текущее дата и время: {{ user_time|date:"d/m/Y H:i" }}</p>
+        <h2>Ваш IP-адрес:</h2>
+        {% if ip_data %}
+            <p>{{ ip_data.ip }}</p>
+        {% else %}
+            <p>Информация о IP-адресе недоступна</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

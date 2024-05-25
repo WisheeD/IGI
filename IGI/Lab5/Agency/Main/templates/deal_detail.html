@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}Подробности сделки{% endblock %}
+{% block content %}
+<style>
+  form {
+    margin-top: 20px;
+    display: inline;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  button, .button-link {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+  }
+
+  .approve-btn {
+    background-color: #007bff;
+  }
+
+  .reject-btn {
+    background-color: #dc3545;
+  }
+
+  .button-link {
+    background-color: #6c757d;
+    display: inline-block;
+  }
+
+  button:hover, .button-link:hover {
+    opacity: 0.8;
+  }
+</style>
+
+<h2>{{ deal.property.name }}</h2>
+<p>Дата сделки: {{ deal.date }}</p>
+<p>Сумма сделки: {{ deal.amount }}</p>
+<p>Тип сделки: {{ deal.deal_type }}</p>
+<p>Статус сделки: {{ deal.status }}</p>
+
+<div class="buttons">
+  <form method="post" action="{% url 'approve_deal' deal.id %}">
+    {% csrf_token %}
+    <button type="submit" class="approve-btn" {% if deal.status != 'pending' %}disabled{% endif %}>Одобрить</button>
+  </form>
+
+  <form method="post" action="{% url 'reject_deal' deal.id %}">
+    {% csrf_token %}
+    <button type="submit" class="reject-btn" {% if deal.status != 'pending' %}disabled{% endif %}>Отклонить</button>
+  </form>
+</div>
+{% endblock %}

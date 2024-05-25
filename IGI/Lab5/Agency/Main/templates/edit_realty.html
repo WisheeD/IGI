@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block title %}Редактировать Недвижимость{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    .container {
+        width: 400px;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+    }
+    .container h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .form-group {
+        margin-bottom: 15px;
+    }
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    .form-group button {
+        width: 100%;
+        padding: 10px;
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .form-group button:hover {
+        background-color: #0056b3;
+    }
+    .error {
+        color: red;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+</style>
+
+<div class="container">
+    <h1>Редактировать Недвижимость</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="id_name">Название:</label>
+            {{ update_form.name }}
+        </div>
+        <div class="form-group">
+            <label for="id_address">Адрес:</label>
+            {{ update_form.address }}
+        </div>
+        <div class="form-group">
+            <label for="id_area">Площадь:</label>
+            {{ update_form.area }}
+        </div>
+        <div class="form-group">
+            <label for="id_price">Цена:</label>
+            {{ update_form.price }}
+        </div>
+        <div class="form-group">
+            <label for="id_description">Описание:</label>
+            {{ update_form.description }}
+        </div>
+        <div class="form-group">
+            <label for="id_property_type">Тип недвижимости:</label>
+            {{ update_form.realty_type }}
+        </div>
+        <div class="form-group">
+            <label for="id_image_upload">Загрузить новое изображение:</label>
+            <input type="file" id="id_image_upload" name="image">
+        </div>
+        <div class="form-group">
+            <button type="submit">Сохранить</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

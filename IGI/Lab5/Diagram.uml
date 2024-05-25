@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>Python</ID>
+  <OriginalElement>Agency.Main.models.User</OriginalElement>
+  <nodes>
+    <node x="1605.75" y="-172.0">Agency.Main.models.Company</node>
+    <node x="92.25" y="745.0">Agency.Main.models.User</node>
+    <node x="302.5" y="-848.0">django.db.models.base.ModelBase</node>
+    <node x="1424.75" y="123.0">Agency.Main.models.Deal</node>
+    <node x="-203.5" y="-776.0">object</node>
+    <node x="851.75" y="171.0">Agency.Main.models.Review</node>
+    <node x="1134.75" y="147.0">Agency.Main.models.Coupon</node>
+    <node x="1310.75" y="-136.0">Agency.Main.models.Vacancy</node>
+    <node x="579.75" y="159.0">Agency.Main.models.News</node>
+    <node x="17.25" y="183.0">django.contrib.auth.models.PermissionsMixin</node>
+    <node x="-19.5" y="-722.5">django.db.models.utils.AltersData</node>
+    <node x="200.75" y="-529.0">django.db.models.base.Model</node>
+    <node x="-216.0" y="-896.0">typing.Hashable</node>
+    <node x="1034.75" y="-244.0">Agency.Main.models.Realty</node>
+    <node x="33.75" y="374.0">django.contrib.auth.models.AbstractUser</node>
+    <node x="736.75" y="-136.0">Agency.Main.models.Question</node>
+    <node x="211.75" y="-184.0">django.contrib.auth.base_user.AbstractBaseUser</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="django.contrib.auth.models.PermissionsMixin" target="django.db.models.base.Model" relationship="REALIZATION">
+      <point x="0.0" y="-55.5" />
+      <point x="209.75" y="149.0" />
+      <point x="721.75" y="149.0" />
+      <point x="721.75" y="-254.0" />
+      <point x="333.25" y="-254.0" />
+      <point x="0.0" y="127.5" />
+    </edge>
+    <edge source="object" target="typing.Hashable" relationship="REALIZATION">
+      <point x="0.0" y="-67.5" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="Agency.Main.models.Vacancy" target="django.db.models.base.Model" relationship="REALIZATION">
+      <point x="0.0" y="-55.5" />
+      <point x="1443.25" y="-254.0" />
+      <point x="333.25" y="-254.0" />
+      <point x="0.0" y="127.5" />
+    </edge>
+    <edge source="django.db.models.base.Model" target="django.db.models.utils.AltersData" relationship="REALIZATION">
+      <point x="66.25" y="-127.5" />
+      <point x="399.5" y="-539.0" />
+      <point x="126.5" y="-539.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="Agency.Main.models.Company" target="django.db.models.base.Model" relationship="REALIZATION">
+      <point x="0.0" y="-91.5" />
+      <point x="1742.25" y="-254.0" />
+      <point x="333.25" y="-254.0" />
+      <point x="0.0" y="127.5" />
+    </edge>
+    <edge source="Agency.Main.models.News" target="django.db.models.base.Model" relationship="REALIZATION">
+      <point x="0.0" y="-79.5" />
+      <point x="700.75" y="-254.0" />
+      <point x="333.25" y="-254.0" />
+      <point x="0.0" y="127.5" />
+    </edge>
+    <edge source="Agency.Main.models.Question" target="django.db.models.base.Model" relationship="REALIZATION">
+      <point x="0.0" y="-55.5" />
+      <point x="870.75" y="-254.0" />
+      <point x="333.25" y="-254.0" />
+      <point x="0.0" y="127.5" />
+    </edge>
+    <edge source="django.contrib.auth.models.AbstractUser" target="django.contrib.auth.base_user.AbstractBaseUser" relationship="REALIZATION">
+      <point x="0.0" y="-175.5" />
+      <point x="209.75" y="364.0" />
+      <point x="417.25" y="364.0" />
+      <point x="0.0" y="103.5" />
+    </edge>
+    <edge source="django.contrib.auth.models.AbstractUser" target="django.contrib.auth.models.PermissionsMixin" relationship="REALIZATION">
+      <point x="0.0" y="-175.5" />
+      <point x="0.0" y="55.5" />
+    </edge>
+    <edge source="django.db.models.utils.AltersData" target="object" relationship="REALIZATION">
+      <point x="-146.0" y="-0.0" />
+      <point x="67.0" y="-0.0" />
+    </edge>
+    <edge source="Agency.Main.models.Review" target="django.db.models.base.Model" relationship="REALIZATION">
+      <point x="0.0" y="-67.5" />
+      <point x="978.25" y="93.0" />
+      <point x="679.75" y="93.0" />
+      <point x="679.75" y="-254.0" />
+      <point x="333.25" y="-254.0" />
+      <point x="0.0" y="127.5" />
+    </edge>
+    <edge source="Agency.Main.models.Deal" target="django.db.models.base.Model" relationship="REALIZATION">
+      <point x="0.0" y="-115.5" />
+      <point x="1541.25" y="113.0" />
+      <point x="637.75" y="113.0" />
+      <point x="637.75" y="-254.0" />
+      <point x="333.25" y="-254.0" />
+      <point x="0.0" y="127.5" />
+    </edge>
+    <edge source="django.db.models.base.Model" target="typing.Hashable" relationship="REALIZATION">
+      <point x="-66.25" y="-127.5" />
+      <point x="267.0" y="-549.0" />
+      <point x="287.5" y="-549.0" />
+      <point x="287.5" y="-786.0" />
+      <point x="-136.5" y="-786.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="Agency.Main.models.Realty" target="django.db.models.base.Model" relationship="REALIZATION">
+      <point x="0.0" y="-163.5" />
+      <point x="1157.75" y="-254.0" />
+      <point x="333.25" y="-254.0" />
+      <point x="0.0" y="127.5" />
+    </edge>
+    <edge source="django.db.models.base.Model" target="django.db.models.base.ModelBase" relationship="INSTANCEOF">
+      <point x="-66.25" y="-127.5" />
+      <point x="267.0" y="-549.0" />
+      <point x="454.0" y="-549.0" />
+      <point x="0.0" y="139.5" />
+    </edge>
+    <edge source="Agency.Main.models.Coupon" target="django.db.models.base.Model" relationship="REALIZATION">
+      <point x="0.0" y="-91.5" />
+      <point x="1264.75" y="103.0" />
+      <point x="658.75" y="103.0" />
+      <point x="658.75" y="-254.0" />
+      <point x="333.25" y="-254.0" />
+      <point x="0.0" y="127.5" />
+    </edge>
+    <edge source="Agency.Main.models.User" target="django.contrib.auth.models.AbstractUser" relationship="REALIZATION">
+      <point x="0.0" y="-115.5" />
+      <point x="0.0" y="175.5" />
+    </edge>
+    <edge source="django.contrib.auth.base_user.AbstractBaseUser" target="django.db.models.base.Model" relationship="REALIZATION">
+      <point x="0.0" y="-103.5" />
+      <point x="417.25" y="-254.0" />
+      <point x="333.25" y="-254.0" />
+      <point x="0.0" y="127.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.8284349849715771" showDependencies="false" x="708.4931147681971" y="122.96806400000003" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+  </Categories>
+</Diagram>
+

@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block title %}Промокоды{% endblock %}
+{% block content %}
+<style>
+    .coupon-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    .coupon-table th, .coupon-table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    .coupon-table th {
+        background-color: #f2f2f2;
+        color: #333;
+    }
+
+    .coupon-table tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    .coupon-table tr:hover {
+        background-color: #ddd;
+    }
+
+    .coupon-table th, .coupon-table td {
+        padding: 12px 15px;
+    }
+
+    h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        font-size: 20px;
+        margin-top: 30px;
+        margin-bottom: 10px;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 10px 0;
+        font-size: 14px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .btn:hover {
+        background-color: #45a049;
+    }
+</style>
+
+<h1>Промокоды</h1>
+
+<h2>Активные промокоды</h2>
+<table class="coupon-table">
+    <tr>
+        <th>Промокод</th>
+        <th>Описание</th>
+        <th>Скидка</th>
+        <th>Дата истечения срока</th>
+    </tr>
+    {% for coupon in active_coupons %}
+    <tr>
+        <td>{{ coupon.code }}</td>
+        <td>{{ coupon.description }}</td>
+        <td>{{ coupon.discount }}%</td>
+        <td>{{ coupon.date_expired }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

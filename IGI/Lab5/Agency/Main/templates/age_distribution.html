@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Статистика{% endblock %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Статистика</title>
+</head>
+<body>
+    <h1>Статистика</h1>
+    <img src="{% url 'age_distribution_chart' %}" alt="Age Distribution Chart">
+    <p>Средний возраст: {{ avg_ages }}</p>
+</body>
+</html>
+{% endblock %}

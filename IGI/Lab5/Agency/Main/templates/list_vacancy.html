@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}Вакансии{% endblock %}
+
+{% block content %}
+<style>
+    .vacancy-list {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    .vacancy-item {
+        margin-bottom: 20px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+    .vacancy-item h3 {
+        margin-top: 0;
+    }
+    .create-vacancy a {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+    .create-vacancy a:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<div class="vacancy-list">
+    <h1>Вакансии</h1>
+    {% for vacancy in vacancies %}
+        <div class="vacancy-item">
+            <h3>{{ vacancy.title }}</h3>
+            <p>{{ vacancy.description|truncatewords:30 }}</p>
+            <p><strong>Дата публикации:</strong> {{ vacancy.date_posted|date:"d/m/Y" }}</p>
+            <a href="{% url 'vacancy_detail' vacancy.pk %}">Читать далее</a>
+        </div>
+    {% empty %}
+        <p>Нет вакансий.</p>
+    {% endfor %}
+</div>
+{% endblock %}

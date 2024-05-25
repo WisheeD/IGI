@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Доступные сделки{% endblock %}
+{% block content %}
+<style>
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  li {
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #f9f9f9;
+  }
+
+  li a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+  }
+
+  li span {
+    color: #888;
+    font-size: 0.8em;
+  }
+</style>
+
+<h2>Доступные сделки</h2>
+<ul>
+  {% for deal in available_deals %}
+  <li>
+    <a href="{% url 'deal_detail' deal.id %}">{{ deal.property.name }}</a>
+    <span>- {{ deal.date }}</span>
+  </li>
+  {% empty %}
+  <li>Нет доступных сделок</li>
+  {% endfor %}
+</ul>
+{% endblock %}

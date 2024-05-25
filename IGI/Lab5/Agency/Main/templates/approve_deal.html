@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Подробности сделки{% endblock %}
+{% block content %}
+<style>
+  form {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+  }
+
+  button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+  }
+
+  button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+
+  button[type="button"] {
+    background-color: #6c757d;
+    color: #fff;
+  }
+
+  button[type="button"]:hover {
+    background-color: #5a6268;
+  }
+</style>
+
+<h2>{{ deal.property.name }}</h2>
+<p>Дата сделки: {{ deal.date }}</p>
+<p>Сумма сделки: {{ deal.amount }}</p>
+<p>Тип сделки: {{ deal.deal_type }}</p>
+<p>Статус сделки: {{ deal.status }}</p>
+
+<form method="post" action="{% url 'approve_deal' deal.id %}">
+  {% csrf_token %}
+  <button type="submit" name="action" value="approve">Одобрить</button>
+  <button type="button" onclick="window.location.href='{% url 'reject_deal' deal.id %}'">Отклонить</button>
+</form>
+{% endblock %}

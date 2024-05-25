@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ news.title }}{% endblock %}
+
+{% block content %}
+<style>
+    .news-container {
+        width: 900px;
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+    }
+    .news-title {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .news-image {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .news-content {
+        text-align: justify;
+    }
+</style>
+
+<div class="news-container">
+    <h1 class="news-title">{{ current_news.title }}</h1>
+    <div class="news-image">
+        {% if current_news.image %}
+            <img src="{{ current_news.image.url }}" alt="{{ news.title }}">
+        {% else %}
+            <img src="https://via.placeholder.com/600x400" alt="No image available">
+        {% endif %}
+    </div>
+    <div class="news-content">
+        {{ current_news.content|linebreaks }}
+    </div>
+</div>
+{% endblock %}

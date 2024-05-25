@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Часто задаваемые вопросы{% endblock %}
+
+{% block content %}
+<style>
+    .faq-list {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    .faq-item {
+        margin-bottom: 20px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+    .faq-item h3 {
+        margin-top: 0;
+    }
+</style>
+
+<div class="faq-list">
+    {% for question in questions %}
+        <div class="faq-item">
+            <h3>{{ question.question }} {{ question.date|date:"d/m/Y" }}</h3>
+            {% if question.answer %}
+                <p>{{ question.answer }}</p>
+            {% else %}
+                <p>Ответ на данный вопрос еще не добавлен.</p>
+            {% endif %}
+        </div>
+    {% empty %}
+        <p>Нет часто задаваемых вопросов.</p>
+    {% endfor %}
+</div>
+{% endblock %}
